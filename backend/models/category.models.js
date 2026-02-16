@@ -4,9 +4,8 @@ const categorySchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Category is required!!!'],
-      unique: true,
-      trim: true
+      required: [true, 'category is require!'],
+      unique: true
     },
     note: {
       type: String
@@ -18,3 +17,5 @@ const categorySchema = new mongoose.Schema(
 const Category = mongoose.model('Category', categorySchema);
 
 module.exports = Category;
+
+

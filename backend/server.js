@@ -2,9 +2,10 @@ const express = require('express')
 const app = express()
 const dbconnection = require('./config/db.js')
 const categoryRouter = require('./routes/category.route.js')
-
 require('dotenv').config()
 
+//middleware
+app.use(express.json())
 
 app.use('/api/category', categoryRouter)
 

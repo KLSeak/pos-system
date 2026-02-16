@@ -27,6 +27,7 @@ const getAllCategory = async (req,res)=>{
     try {
         res.status(200).json({
             success: true ,
+            data: allCategory,
             message: "Category are found!"
         })
     } catch (error) {
@@ -37,10 +38,75 @@ const getAllCategory = async (req,res)=>{
     }
 }
 
+const getOneCategory = async (req,res)=>{
+    const { id } = req.params
+    console.log(id)
 
+    const oneCate = await Category.findById(id)
+    try {
+        res.status(200).json({
+            success: true,
+            data: oneCate,
+            message: `Category id ${id} found!`
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
 
+const updateCategory = async (req,res)=>{
+    try {
+        const { id } = req.params;
+        console.log(id)
+
+        const updateCate = await Category.findByIdAndUpdate(id, req.body,{
+            new: true,
+            runValidators: true
+        });
+        if(!updateCate){
+            res.status(404).json({
+                success: false,
+                message: `User id ${id} not found`
+            })
+        }
+        res.status(200).json({
+            success: true,
+            data: updateCate,
+            message: `User id ${id} update success!!`
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
+const removeCategory = async (req,res)=>{
+    const { id } = req.params
+    console.log(id)
+    const removeCate = await Category.findByIdAndDelete(id)
+    try {
+        res.status(200).json({
+            success: true,
+            data: removeCate,
+            message: `Category id ${id} remove success`
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
 module.exports = 
                 { addCategory,
-                getAllCategory
+                getAllCategory,
+                getOneCategory,
+                updateCategory,
+                removeCategory
 
 };
