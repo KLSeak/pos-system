@@ -8,7 +8,8 @@ const categorySchema = new mongoose.Schema(
       unique: true
     },
     note: {
-      type: String
+      type: String,
+      required: false 
     }
   },
   { timestamps: true }
