@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        <Route path='' element={<RootTemplate/>}/>
+        <Route path='' element={<RootTemplate/>}>
 
           <Route path='/' element={<Home/>}/>
           <Route path='/category' element={<Category/>}/>
@@ -20,7 +20,7 @@ function App() {
           <Route path='/sale' element={<Sale/>}/>
           <Route path='/report' element={<Report/>}/>
 
-        <Route/>
+        </Route>
         
       </Routes>
     </BrowserRouter>    
