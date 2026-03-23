@@ -4,10 +4,12 @@ const dbconnection = require('./config/db.js')
 const categoryRouter = require('./routes/category.route.js')
 const productRouter = require('./routes/product.route.js')
 const uploadRouter = require('./routes/upload.route.js')
+const cors = require('cors')
 require('dotenv').config()
 
 //middleware
 app.use(express.json())
+app.use(cors())
 
 app.use('/api/category', categoryRouter)
 app.use('/api/product', productRouter)

@@ -23,7 +23,7 @@ const getAllCategory = async (req,res)=>{
     const data = req.body;
     console.log(data)
 
-    const allCategory = await Category.find();
+    const allCategory = await Category.find().sort({createAt: -1})
     try {
         res.status(200).json({
             success: true ,
